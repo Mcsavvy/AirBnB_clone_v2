@@ -1,28 +1,25 @@
 #!/usr/bin/python3
-
-"""
-Flask App
-
+"""Starts Flask web app
 Routes:
-    /
-    /hbnb
+    / - display "Hello HBNB!"
+    /hbnb - display "HBNB"
 """
-
 from flask import Flask
+
 app = Flask(__name__)
+
+
+@app.route('/', strict_slashes=False)
+def hbnb_route():
+    """prints Hello HBNB"""
+    return "Hello HBNB!"
 
 
 @app.route('/hbnb', strict_slashes=False)
 def hbnb():
-    """hbnb page"""
+    """prints HBNB"""
     return "HBNB"
 
 
-@app.route('/', strict_slashes=False)
-def hello_world():
-    """Website index page"""
-    return "Hello HBNB!"
-
-
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0")
