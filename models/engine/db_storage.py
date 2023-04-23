@@ -42,6 +42,10 @@ class DBStorage:
         if HBNB_ENV == 'test':
             Base.metadata.drop_all(self.__engine)
 
+    def close(self):
+        """Close the database connection"""
+        self.__session.remove()
+
     def all(self, cls=None):
         '''query on the current db session all cls objects'''
         dct = {}
