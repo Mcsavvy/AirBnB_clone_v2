@@ -7,10 +7,18 @@ Routes:
     /
     /hbnb
     /c/<text>
+    /python/(<text>)
 """
 
 from flask import Flask
 app = Flask(__name__)
+
+
+@app.route('/python/', strict_slashes=False, defaults={'text': 'is cool'})
+@app.route('/python/<text>', strict_slashes=False)
+def python_route(text):
+    """Python Route 🐍"""
+    return 'Python ' + text.replace('_', ' ')
 
 
 @app.route('/c/<text>', strict_slashes=False)
